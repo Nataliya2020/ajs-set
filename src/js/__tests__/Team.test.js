@@ -25,6 +25,18 @@ test('Метод addAll должен добавлять несколько пе�
   expect(team.members.size).toBe(3);
 });
 
+test('Метод addAll должен добавлять несколько персонажей в коллекцию, если их некоторые поля имеют одиннаковые значения', () => {
+  const char4 = {
+    name: 'Alex',
+    type: 'Swordman',
+    health: 100,
+    level: 2,
+  };
+  const team = new Team();
+  team.addAll(char1, char2, char3, char4);
+  expect(team.members.size).toBe(4);
+});
+
 test('Метод addAll не должен добавлять дублирующих персонажей в коллекцию', () => {
   const team = new Team();
   team.addAll(char1, char2, char2, char3);

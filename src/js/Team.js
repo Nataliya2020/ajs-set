@@ -4,7 +4,9 @@ export default class Team {
   }
 
   add(member) {
-    const isExist = [...this.members].find((item) => item.name === member.name);
+    const isExist = [...this.members].some((item) =>
+      Object.values(member).every((key) => Object.values(item).includes(key))
+    );
     if (isExist) {
       throw new Error('Такой персонаж уже есть в команде');
     }
